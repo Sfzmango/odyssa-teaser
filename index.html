@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Odyssa Catacombs</title>
+  <meta name="description" content="Odyssa Catacombs — a 1-bit pixel-horror descent. In development.">
+  <meta name="theme-color" content="#12100D">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Odyssa Catacombs">
+  <meta property="og:description"
+    content="A 1-bit pixel-horror descent into the sealed catacombs beneath a city that has known too much war. In development.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&family=Jacquard+12&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Palette is locked by the design bible: 1-bit (paper + ink) + one reserved accent. */
+    :root {
+      --paper: #12100D;
+      --ink: #E9E2CF;
+      --accent: #C8341F;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'VT323', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      image-rendering: pixelated;
+    }
+
+    /* Faint first-person tunnel: ink masked by the corridor art at 13% (per design 02-1).
+     corridor_lit.png is an [AI placeholder] asset — temporary scaffolding, swap for human art. */
+    .tunnel {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: var(--ink);
+      opacity: .14;
+      image-rendering: pixelated;
+      -webkit-mask: url('assets/corridor_lit.png') center/cover no-repeat;
+      mask: url('assets/corridor_lit.png') center/cover no-repeat;
+    }
+
+    /* very mild centre-lift so the menu stays legible over the dither */
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 80% at 50% 45%, transparent 52%, rgba(0, 0, 0, .45) 100%);
+    }
+
+    /* the accent letter flickers like a failing tube (design: 7s steps) */
+    @keyframes flicker {
+
+      0%,
+      86%,
+      100% {
+        opacity: 1
+      }
+
+      87% {
+        opacity: .22
+      }
+
+      88% {
+        opacity: 1
+      }
+
+      94% {
+        opacity: 1
+      }
+
+      95% {
+        opacity: .5
+      }
+
+      96% {
+        opacity: 1
+      }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .wordmark {
+      font-family: 'Jacquard 12', monospace;
+      line-height: 1;
+      letter-spacing: clamp(2px, .45vw, 4px);
+      font-size: clamp(74px, 13vw, 124px);
+      color: var(--ink);
+      text-shadow: 0 2px 30px rgba(0, 0, 0, .55);
+    }
+
+    .wordmark .y {
+      color: var(--accent);
+      animation: flicker 7s linear infinite;
+    }
+
+    .catacombs {
+      font-family: 'Silkscreen', monospace;
+      font-weight: 400;
+      color: var(--ink);
+      font-size: clamp(15px, 2.1vw, 24px);
+      letter-spacing: clamp(8px, 1.35vw, 13px);
+      margin-top: 10px;
+      padding-left: .62em;
+    }
+
+    /* optical re-centre for the tracking */
+
+    .tagline {
+      font-family: 'Silkscreen', monospace;
+      font-weight: 400;
+      color: var(--ink);
+      font-size: clamp(8px, .95vw, 9px);
+      letter-spacing: 5px;
+      opacity: .5;
+      margin-top: 14px;
+      padding-left: .4em;
+    }
+
+    .menu {
+      margin-top: clamp(32px, 5.2vh, 52px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: clamp(18px, 2.3vw, 24px);
+      color: var(--ink);
+    }
+
+    .menu div {
+      padding: 3px 18px;
+      line-height: 1.15;
+    }
+
+    .menu div:not(.sel) {
+      opacity: .85;
+    }
+
+    .menu div:hover {
+      background: var(--ink);
+      color: var(--paper);
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    /* the pledge is part of the identity — it lives on the front door */
+    .pledge {
+      position: fixed;
+      bottom: 22px;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      text-align: center;
+      font-size: clamp(12px, 1.5vw, 16px);
+      color: var(--ink);
+      opacity: .55;
+      padding: 0 18px;
+    }
+
+    .ver {
+      position: fixed;
+      bottom: 22px;
+      right: 18px;
+      z-index: 1;
+      font-size: 14px;
+      color: var(--ink);
+      opacity: .35;
+    }
+
+    @media (max-width:640px) {
+      body {
+        justify-content: flex-start;
+        padding-top: 9vh;
+        overflow-y: auto;
+      }
+
+      .pledge {
+        position: static;
+        margin-top: 34px;
+        order: 3;
+      }
+
+      .ver {
+        position: static;
+        margin-top: 10px;
+        text-align: center;
+        right: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tunnel" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <main>
+    <h1 class="wordmark" aria-label="Odyssa">Od<span class="y">y</span>ssa</h1>
+    <div class="catacombs">CATACOMBS</div>
+    <div class="tagline">[ IN DEVELOPMENT ]</div>
+
+    <!-- <nav class="menu" aria-label="Title menu (concept — not yet interactive)">
+      <div class="sel">&gt; CONTINUE EXPEDITION</div>
+      <div>JOURNAL</div>
+      <div>Wishlist on Steam</div>
+      <div>QUIT</div>
+    </nav> -->
+  </main>
+
+  <!-- <div class="pledge">15% OF NET REVENUE &rarr; HUMANITARIAN AID IN UKRAINE &nbsp;·&nbsp; PLEDGED THROUGH 12/31 OF THE
+    1.0 YEAR</div> -->
+</body>
+
+</html>

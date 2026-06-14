@@ -1,0 +1,23 @@
+# --- Claude / AI agent context: never commit ---
+CLAUDE.md
+claude.md
+CLAUDE.local.md
+.claude/
+.claude*
+**/CLAUDE.md
+**/claude.md
+AGENTS.md
+.cursor/
+.aider*
+
+# --- OS / editor noise ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# --- misc ---
+*.bak
+node_modules/
+.cache/
