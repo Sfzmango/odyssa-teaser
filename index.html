@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Odyssa Catacombs</title>
-  <meta name="description" content="Odyssa Catacombs — a 1-bit pixel-horror descent. In development.">
+  <meta name="description"
+    content="Odyssa Catacombs — a 1-bit pixel-horror descent into the sealed catacombs beneath a city that has known too much war. In development.">
   <meta name="theme-color" content="#12100D">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Odyssa Catacombs">
@@ -14,166 +15,326 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&family=Jacquard+12&display=swap"
+    href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&family=Jacquard+12&family=Handjet:wght@300;400;500&display=swap"
     rel="stylesheet">
   <style>
-    /* Palette is locked by the design bible: 1-bit (paper + ink) + one reserved accent. */
+    /* ============================================================
+       ODYSSA CATACOMBS — TEASER
+       Game title-screen chrome over the signature ASCII gradient
+       field. Tokens are lifted verbatim from the design bible:
+       1-bit (paper + ink) + exactly ONE accent (#C8341F), reserved
+       for threat / blood / hysteria. The accent is never decorative.
+       ============================================================ */
     :root {
-      --paper: #12100D;
-      --ink: #E9E2CF;
+      /* PAPER (the dark) */
+      --paper-900: #100E0B;
+      --paper-800: #12100D;
+      --paper-700: #14110E;
+      --paper-500: #1B1916;
+      --paper-400: #221E18;
+      /* INK (the light) */
+      --ink-100: #E9E2CF;
+      --ink-200: #CFC6B2;
+      --ink-300: #B9B0A0;
+      --ink-400: #A89F8E;
+      --ink-500: #8F887B;
+      --ink-600: #6E675C;
+      --ink-700: #3A3733;
+      /* ACCENT (reserved: threat · blood · hysteria) */
       --accent: #C8341F;
+      --accent-edge: #4a211c;
+      --accent-background: #4d4241cc;
+      /* BORDERS / HAIRLINES */
+      --line-200: #2A2620;
+      --line-300: #2C2925;
+      --line-400: #3A352D;
+      /* TYPE — six fixed-job faces; we use four */
+      --font-display: 'Jacquard 12', 'UnifrakturCook', monospace;
+      --font-label: 'Silkscreen', monospace;
+      --font-body: 'VT323', monospace;
+      --font-lore: 'Handjet', 'VT323', monospace;
+      /* the signature vignette */
+      --vignette: radial-gradient(ellipse 25% 40% at 50% 50%, rgba(0, 0, 0, 0.65) 30%, transparent 100%);
     }
 
     * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box
+      box-sizing: border-box;
     }
 
     html,
     body {
-      height: 100%
+      height: 100%;
     }
 
     body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: 'VT323', monospace;
+      background: var(--paper-800);
+      color: var(--ink-100);
+      font-family: var(--font-body);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       position: relative;
       overflow: hidden;
       image-rendering: pixelated;
     }
 
-    /* Faint first-person tunnel: ink masked by the corridor art at 13% (per design 02-1).
-     corridor_lit.png is an [AI placeholder] asset — temporary scaffolding, swap for human art. */
-    .tunnel {
+    /* ---------- signature background: ASCII gradient field ----------
+       Full-bleed monospace dither whose density traces a radial tunnel
+       (sparse, dark center so the wordmark reads; dense textured edges).
+       Mounted by assets/ascii-field.js. */
+    .ascii-backdrop {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background: var(--ink);
-      opacity: .14;
-      image-rendering: pixelated;
-      -webkit-mask: url('assets/corridor_lit.png') center/cover no-repeat;
-      mask: url('assets/corridor_lit.png') center/cover no-repeat;
+      opacity: 0.5;
+      overflow: hidden;
     }
 
-    /* very mild centre-lift so the menu stays legible over the dither */
+    /* centre-lift + vignette so the title stays legible over the dither */
     .vignette {
       position: fixed;
       inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background: radial-gradient(ellipse 80% 80% at 50% 45%, transparent 52%, rgba(0, 0, 0, .45) 100%);
-    }
-
-    /* the accent letter flickers like a failing tube (design: 7s steps) */
-    @keyframes flicker {
-
-      0%,
-      86%,
-      100% {
-        opacity: 1
-      }
-
-      87% {
-        opacity: .22
-      }
-
-      88% {
-        opacity: 1
-      }
-
-      94% {
-        opacity: 1
-      }
-
-      95% {
-        opacity: .5
-      }
-
-      96% {
-        opacity: 1
-      }
-    }
-
-    main {
-      position: relative;
       z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 46% 42% at 50% 44%, var(--paper-800) 0%, rgba(18, 16, 13, 0.72) 38%, transparent 70%),
+        var(--vignette);
+    }
+
+    /* ---------- game HUD chrome pinned to the corners ---------- */
+    .hud {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 0 18px;
+      pointer-events: none;
+    }
+
+    /* depth gauge — lifted from the encounter HUD (accent left rule) */
+    .hud-depth {
+      border-left: 2px solid var(--accent);
+      padding: 10px;
+      background: var(--accent-background)
+    }
+
+    .hud-depth-tag {
+      font-family: var(--font-label);
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .hud-depth-val {
+      font-family: var(--font-body);
+      font-size: 20px;
+      color: var(--ink-100);
+      line-height: 1;
+    }
+
+    .hud-build {
+      font-family: var(--font-label);
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--ink-600);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ---------- centered title core ---------- */
+    main.core {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
       width: 100%;
       padding: 0 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
     }
 
     .wordmark {
-      font-family: 'Jacquard 12', monospace;
+      font-family: var(--font-display);
+      font-weight: 400;
       line-height: 1;
-      letter-spacing: clamp(2px, .45vw, 4px);
-      font-size: clamp(74px, 13vw, 124px);
-      color: var(--ink);
-      text-shadow: 0 2px 30px rgba(0, 0, 0, .55);
+      letter-spacing: clamp(2px, 0.45vw, 4px);
+      font-size: clamp(76px, 13vw, 132px);
+      color: var(--ink-100);
+      text-shadow: 0 2px 40px rgba(0, 0, 0, 0.85), 0 0 14px rgba(18, 16, 13, 0.9);
     }
 
+    /* the accent letter flickers like a failing fluorescent tube */
     .wordmark .y {
       color: var(--accent);
       animation: flicker 7s linear infinite;
     }
 
-    .catacombs {
-      font-family: 'Silkscreen', monospace;
+    @keyframes flicker {
+
+      0%,
+      86%,
+      100% {
+        opacity: 1;
+      }
+
+      87% {
+        opacity: 0.22;
+      }
+
+      88% {
+        opacity: 1;
+      }
+
+      94% {
+        opacity: 1;
+      }
+
+      95% {
+        opacity: 0.5;
+      }
+
+      96% {
+        opacity: 1;
+      }
+    }
+
+    .subtitle {
+      font-family: var(--font-label);
       font-weight: 400;
-      color: var(--ink);
       font-size: clamp(15px, 2.1vw, 24px);
       letter-spacing: clamp(8px, 1.35vw, 13px);
-      margin-top: 10px;
-      padding-left: .62em;
+      color: var(--ink-100);
+      margin-top: 12px;
+      padding-left: 0.62em;
     }
 
-    /* optical re-centre for the tracking */
-
-    .tagline {
-      font-family: 'Silkscreen', monospace;
-      font-weight: 400;
-      color: var(--ink);
-      font-size: clamp(8px, .95vw, 9px);
-      letter-spacing: 5px;
-      opacity: .5;
-      margin-top: 14px;
-      padding-left: .4em;
+    /* terminal-style status line — the game's parser voice */
+    .status {
+      font-family: var(--font-body);
+      font-size: clamp(14px, 1.8vw, 18px);
+      letter-spacing: 3px;
+      color: var(--ink-300);
+      margin-top: 18px;
     }
 
+    .status .caret {
+      color: var(--accent);
+    }
+
+    /* blinking block cursor in steps(), never an eased fade */
+    .blink {
+      color: var(--ink-100);
+      animation: blink 1.1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      50% {
+        opacity: 1;
+      }
+
+      51%,
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .premise {
+      max-width: 460px;
+      margin-top: 22px;
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.4;
+      color: var(--ink-400);
+      text-wrap: pretty;
+    }
+
+    /* ---------- game-style main menu ----------
+       Reads as the game's title menu: most runs are SEALED until launch;
+       the only live verbs are the teaser's calls to action. Hover is a
+       hard ink↔paper invert in steps(), never a soft fade. */
     .menu {
-      margin-top: clamp(32px, 5.2vh, 52px);
+      margin-top: 34px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      font-size: clamp(18px, 2.3vw, 24px);
-      color: var(--ink);
     }
 
-    .menu div {
-      padding: 3px 18px;
-      line-height: 1.15;
-    }
-
-    .menu div:not(.sel) {
-      opacity: .85;
-    }
-
-    .menu div:hover {
-      background: var(--ink);
-      color: var(--paper);
-      opacity: 1;
+    .menu-row {
+      font-family: var(--font-body);
+      font-size: clamp(19px, 2.3vw, 23px);
+      color: var(--ink-100);
+      background: none;
+      border: 1px solid transparent;
       cursor: pointer;
+      padding: 4px 18px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      display: inline-flex;
+      gap: 12px;
+      align-items: baseline;
+      white-space: nowrap;
+      transition: background 60ms steps(1), color 60ms steps(1);
+    }
+
+    .menu-row .caret {
+      color: var(--accent);
+    }
+
+    .menu-row:hover,
+    .menu-row:focus-visible {
+      background: var(--ink-100);
+      color: var(--paper-800);
+      outline: none;
+    }
+
+    .menu-row:hover .caret,
+    .menu-row:focus-visible .caret {
+      color: var(--paper-800);
+    }
+
+    /* pressed = a 1px downward nudge */
+    .menu-row:active {
+      transform: translateY(1px);
+    }
+
+    /* sealed rows: the game exists but you can't run it yet */
+    .menu-row.locked {
+      color: var(--ink-600);
+      cursor: not-allowed;
+    }
+
+    .menu-row.locked:hover {
+      background: none;
+      color: var(--ink-600);
+    }
+
+    .seal {
+      font-family: var(--font-label);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--accent-edge);
+      align-self: center;
+    }
+
+    /* lore caption in the dot-matrix face — the game's withheld voice */
+    .lore {
+      font-family: var(--font-lore);
+      font-weight: 300;
+      font-size: clamp(13px, 1.6vw, 16px);
+      letter-spacing: 1px;
+      color: var(--ink-600);
+      margin-top: 30px;
+      font-style: italic;
     }
 
     /* the pledge is part of the identity — it lives on the front door */
@@ -182,66 +343,92 @@
       bottom: 22px;
       left: 0;
       right: 0;
-      z-index: 1;
+      z-index: 3;
       text-align: center;
-      font-size: clamp(12px, 1.5vw, 16px);
-      color: var(--ink);
-      opacity: .55;
+      font-family: var(--font-label);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--ink-500);
+      opacity: 0.85;
       padding: 0 18px;
     }
 
-    .ver {
-      position: fixed;
-      bottom: 22px;
-      right: 18px;
-      z-index: 1;
-      font-size: 14px;
-      color: var(--ink);
-      opacity: .35;
-    }
-
-    @media (max-width:640px) {
+    @media (max-width: 640px) {
       body {
-        justify-content: flex-start;
-        padding-top: 9vh;
         overflow-y: auto;
+      }
+
+      main.core {
+        justify-content: flex-start;
+        padding-top: 14vh;
+        padding-bottom: 120px;
+      }
+
+      .hud {
+        top: 12px;
+        padding: 0 12px;
       }
 
       .pledge {
         position: static;
-        margin-top: 34px;
-        order: 3;
-      }
-
-      .ver {
-        position: static;
-        margin-top: 10px;
-        text-align: center;
-        right: auto;
+        margin-top: 30px;
+        padding-bottom: 24px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="tunnel" aria-hidden="true"></div>
+  <!-- signature ASCII gradient field — mounted by assets/ascii-field.js -->
+  <div id="ascii" class="ascii-backdrop" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
 
-  <main>
-    <h1 class="wordmark" aria-label="Odyssa">Od<span class="y">y</span>ssa</h1>
-    <div class="catacombs">CATACOMBS</div>
-    <div class="tagline">[ IN DEVELOPMENT ]</div>
+  <!-- game HUD chrome -->
+  <div class="hud" aria-hidden="true">
+    <div class="hud-depth">
+      <div class="hud-depth-tag">Pledge:</div>
+      <div class="hud-depth-val">15% OF NET REVENUE &rarr; HUMANITARIAN AID IN UKRAINE &nbsp;·&nbsp; PLEDGED THROUGH THE
+        END OF THE YEAR OF V1.0'S RELEASE (2026)</div>
+    </div>
+  </div>
 
-    <!-- <nav class="menu" aria-label="Title menu (concept — not yet interactive)">
-      <div class="sel">&gt; CONTINUE EXPEDITION</div>
-      <div>JOURNAL</div>
-      <div>Wishlist on Steam</div>
-      <div>QUIT</div>
-    </nav> -->
+  <main class="core">
+    <h1 class="wordmark" aria-label="Odyssa">Od<span class="y">y</span>ssa</h1>
+    <div class="subtitle">CATACOMBS</div>
+
+    <div class="status"> [ IN DEVELOPMENT ] </div>
+
+    <p class="premise">
+      A 1-bit pixel-horror descent into the sealed catacombs beneath a city
+      that has known too much war. <span class="blink">&#9612;</span>
+    </p>
+
+    <nav class="menu" aria-label="Title menu">
+      <!-- the only live verb until launch -->
+      <a class="menu-row" href="concept_design/" aria-label="View the master concept design board"><span
+          class="caret">&gt;</span> CONCEPT DESIGN</a>
+      <!-- <a class="menu-row" href="#" aria-label="Get notified at launch"><span class="caret">&gt;</span> NOTIFY ME</a> -->
+      <!-- sealed game runs — the title menu exists, the descent doesn't open yet -->
+      <!-- <button class="menu-row locked" type="button" disabled>NEW EXPEDITION <span class="seal">[ SEALED ]</span></button> -->
+      <!-- <button class="menu-row locked" type="button" disabled>JOURNAL <span class="seal">[ SEALED ]</span></button> -->
+    </nav>
+
+    <!-- <div class="lore">they sealed the lower gallery. it was not flooded.</div> -->
   </main>
 
-  <!-- <div class="pledge">15% OF NET REVENUE &rarr; HUMANITARIAN AID IN UKRAINE &nbsp;·&nbsp; PLEDGED THROUGH 12/31 OF THE
-    1.0 YEAR</div> -->
+  </div>
+
+  <script src="assets/ascii-field.js"></script>
+  <script>
+    // Mount the signature field: radial tunnel, inverted so the centre is
+    // sparse/dark (wordmark reads) and the edges are dense and textured.
+    (function () {
+      var el = document.getElementById('ascii');
+      if (el && window.AsciiField) {
+        window.AsciiField.mount(el, { shape: 'tunnel', invert: true, cell: 15, accent: 0.15 });
+      }
+    })();
+  </script>
 </body>
 
 </html>

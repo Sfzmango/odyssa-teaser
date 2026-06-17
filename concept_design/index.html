@@ -1,0 +1,1580 @@
+<!-- @dsCard group="Boards" viewport="1320x900" name="Master Concept Board" subtitle="The full concept board — world, descent, cast and systems as an atmospheric teaser, no technical detail." -->
+<!-- @startingPoint section="Boards" subtitle="Odyssa Catacombs master concept board — full teaser" viewport="1320x900" -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Odyssa Catacombs — Master Concept Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&family=Jacquard+12&family=Handjet:wght@300;400;500;700&family=Special+Elite&family=DotGothic16&display=swap"
+    rel="stylesheet">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #161412;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    @keyframes blink {
+
+      0%,
+      49% {
+        opacity: 1;
+      }
+
+      50%,
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    @keyframes descend {
+      0% {
+        transform: translateY(-18px);
+      }
+
+      100% {
+        transform: translateY(2px);
+      }
+    }
+
+    @keyframes gaugefill {
+      0% {
+        height: 18%;
+      }
+
+      100% {
+        height: 62%;
+      }
+    }
+
+    @keyframes flicker {
+
+      0%,
+      92%,
+      100% {
+        opacity: 1;
+      }
+
+      93% {
+        opacity: 0.2;
+      }
+
+      95% {
+        opacity: 0.8;
+      }
+
+      97% {
+        opacity: 0.35;
+      }
+    }
+
+    .spr {
+      image-rendering: pixelated;
+    }
+
+    .sec {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .seclabel {
+      border-bottom: 1px solid #2C2925;
+      padding-bottom: 8px;
+      font-family: 'Silkscreen', monospace;
+      font-size: 13px;
+      color: #B9B0A0;
+      letter-spacing: 3px;
+    }
+
+    .card {
+      background: #1B1916;
+      border: 1px solid #2C2925;
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .pin {
+      font-family: 'Silkscreen', monospace;
+      font-size: 9px;
+      color: #6E675C;
+      letter-spacing: 2px;
+    }
+
+    .note {
+      font-size: 16px;
+      color: #8F887B;
+      line-height: 1.3;
+      font-family: 'VT323', monospace;
+    }
+
+    .tag {
+      font-family: 'Silkscreen', monospace;
+      font-size: 8px;
+      letter-spacing: 1px;
+      padding: 2px 6px;
+      border: 1px solid #C8341F;
+      color: #C8341F;
+    }
+
+    .devbox {
+      background: #100E0B;
+      border: 1px solid #2A2620;
+      border-radius: 4px;
+      padding: 14px 16px;
+      font-family: 'VT323', monospace;
+      font-size: 16px;
+      color: #9FB0A0;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+
+    /* ---- hero (teaser) ---- */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 84vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      border-bottom: 2px solid #2C2925;
+    }
+
+    .hero-ascii {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: .3;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-vig {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(ellipse 50% 46% at 50% 44%, #12100D 0%, rgba(18, 16, 13, .66) 40%, transparent 74%), radial-gradient(ellipse 80% 80% at 50% 45%, transparent 52%, rgba(0, 0, 0, .45) 100%);
+    }
+
+    .hero-core {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero .kicker {
+      font-family: 'Silkscreen', monospace;
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: #A89F8E;
+      margin-bottom: 26px;
+    }
+
+    .hero .wm {
+      font-family: 'Jacquard 12', monospace;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: clamp(2px, 0.45vw, 4px);
+      font-size: clamp(76px, 13vw, 132px);
+      color: #E9E2CF;
+      text-shadow: 0 2px 40px rgba(0, 0, 0, 0.85), 0 0 14px rgba(18, 16, 13, 0.9);
+    }
+
+    .hero .wm .y {
+      color: #C8341F;
+      animation: flicker 7s steps(1) infinite;
+    }
+
+    .hero .sub {
+      font-family: 'Silkscreen', monospace;
+      font-size: clamp(14px, 2vw, 22px);
+      letter-spacing: 12px;
+      color: #E9E2CF;
+      margin-top: 14px;
+      padding-left: .62em;
+    }
+
+    .hero .tag2 {
+      font-family: 'Silkscreen', monospace;
+      font-size: 9px;
+      letter-spacing: 5px;
+      color: #E9E2CF;
+      opacity: .5;
+      margin-top: 18px;
+      padding-left: .4em;
+    }
+
+    .hero .lede {
+      max-width: 620px;
+      margin-top: 30px;
+      font-size: 20px;
+      line-height: 1.45;
+      color: #B9B0A0;
+    }
+
+    .hero .cue {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 22px;
+      z-index: 2;
+      font-family: 'Silkscreen', monospace;
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: #6E675C;
+    }
+
+    .boardwrap {
+      background: #161412;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .boardinner {
+      width: 1320px;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 52px;
+    }
+
+    .board-foot {
+      width: 100%;
+      text-align: center;
+      padding: 44px 24px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      background: #14110E;
+    }
+
+    .board-foot .fwm {
+      font-family: 'Jacquard 12', monospace;
+      font-size: 48px;
+      color: #E9E2CF;
+    }
+
+    .board-foot .fwm .y {
+      color: #C8341F;
+    }
+
+    .board-foot .fl {
+      font-family: 'Silkscreen', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #8F887B;
+    }
+
+    .board-foot .fm {
+      font-family: 'Silkscreen', monospace;
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: #3A3733;
+    }
+
+    /* ---- return to surface (home) — fixed, bottom-right ---- */
+    .home-return {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 50;
+      font-family: 'Silkscreen', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #E9E2CF;
+      background: #12100D;
+      border: 1px solid #E9E2CF;
+      padding: 9px 14px;
+      text-decoration: none;
+      transition: background 60ms steps(1), color 60ms steps(1);
+    }
+
+    .home-return:hover,
+    .home-return:focus-visible {
+      background: #E9E2CF;
+      color: #12100D;
+      outline: none;
+    }
+
+    .home-return:active {
+      transform: translateY(1px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <div id="heroAscii" class="hero-ascii" aria-hidden="true"></div>
+    <div class="hero-vig" aria-hidden="true"></div>
+    <div class="hero-core">
+      <div class="kicker">MASTER CONCEPT BOARD</div>
+      <h1 class="wm" aria-label="Odyssa">Od<span class="y">y</span>ssa</h1>
+      <p class="sub">[ A 1-BIT PIXEL-HORROR DESCENT · IN DEVELOPMENT ]</p>
+    </div>
+    <div class="cue">▾ DESCEND</div>
+  </header>
+
+  <div class="boardwrap">
+    <div class="boardinner">
+      <!-- ============ MASTHEAD ============ -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+
+        <div style="display: flex; gap: 14px;">
+          <div style="flex: 1; background: #1B1916; border: 1px solid #2C2925; border-radius: 6px; padding: 16px;">
+            <div class="pin" style="margin-bottom: 8px;">PREMISE</div>
+            <div style="font-size: 19px; color: #CFC6B2; line-height: 1.35;">A dark-tourism enthusiast descends into the
+              Odyssa catacombs in a modern world that is <i>almost</i> ours. The game is a cynical study of the indirect
+              costs of war — the <span style="color: #C8341F;">hysteria</span> that hangs over a place during conflict
+              and the residue that festers long after it ends. The horror isn't the war; it's everything the war left
+              behind, and everyone who can't stop fighting it.</div>
+          </div>
+          <div
+            style="width: 360px; background: #1B1916; border: 1px solid #2C2925; border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+            <div class="pin">DESIGN PILLARS</div>
+            <div style="font-size: 16px; color: #A89F8E; line-height: 1.3;">1 · <span style="color: #E9E2CF;">Hysteria
+                over gore.</span> Fear outlives the threat.</div>
+            <div style="font-size: 16px; color: #A89F8E; line-height: 1.3;">2 · <span style="color: #E9E2CF;">Ambiguity
+                is content.</span> The player theorizes; the game never confirms.</div>
+            <div style="font-size: 16px; color: #A89F8E; line-height: 1.3;">3 · <span
+                style="color: #E9E2CF;">Point-and-click, modern horror twist.</span></div>
+            <div style="font-size: 16px; color: #A89F8E; line-height: 1.3;">4 · <span style="color: #E9E2CF;">The dead
+                don't leave.</span> Your failures become the world.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ GLOBAL RULES ============ -->
+      <div class="sec">
+        <div class="seclabel">00 · THE RULES OF THE PLACE</div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;">
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="pin">NO ABSOLUTE DATES</div>
+            <div class="note">There are no years here — not on a save, not on a terminal, not in a headline. <span
+                style="color: #E9E2CF;">"When" is something you assemble from rumor</span>, and a world this close to
+              ours with its dates filed off never sits quite right.</div>
+          </div>
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="pin" style="color: #C8341F;">HYSTERIA, NOT SANITY</div>
+            <div class="note">The meter that matters doesn't drain — it <span style="color: #C8341F;">fills</span>. The
+              nearer you come to breaking, the more the world turns <span style="color: #C8341F;">red</span>. Here, fear
+              is a thing that rises.</div>
+          </div>
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="pin">THE WORLD MOVES WHEN YOU DO</div>
+            <div class="note">No clock ticks against you; the catacombs can wait forever. But every step you take and
+              every thing you touch, the dark takes its own turn in answer.</div>
+          </div>
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="pin">PALETTE LOCK</div>
+            <div style="display: flex; gap: 5px; margin: 2px 0;">
+              <div style="flex: 2; height: 22px; background: #12100D; border: 1px solid #3A3733;"></div>
+              <div style="flex: 2; height: 22px; background: #E9E2CF;"></div>
+              <div style="flex: 1; height: 22px; background: #C8341F;"></div>
+            </div>
+            <div class="note">1-bit + one accent. Accent is reserved — threat, blood, hysteria-failure. Themes swap the
+              trio; accent <i>meaning</i> never changes.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ RUN STRUCTURE ============ -->
+      <div class="sec">
+        <div class="seclabel">01 · THE SHAPE OF A DESCENT</div>
+        <div style="display: flex; gap: 18px;">
+          <!-- flow diagram -->
+          <div class="card" style="flex: 1; display: flex; flex-direction: column; gap: 14px;">
+            <div class="pin">THE SHAPE OF A RUN</div>
+            <div
+              style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-family: 'Silkscreen', monospace; font-size: 10px;">
+              <div style="border: 1px solid #E9E2CF; color: #E9E2CF; padding: 8px 12px;">HUB</div>
+              <span style="color: #6E675C;">›</span>
+              <div style="border: 1px solid #E9E2CF; color: #E9E2CF; padding: 8px 12px;">DESCEND</div>
+              <span style="color: #6E675C;">›</span>
+              <div style="border: 1px solid #C8341F; color: #C8341F; padding: 8px 10px;">GALLERY 1</div>
+              <span style="color: #6E675C;">›</span>
+              <div style="border: 1px solid #C8341F; color: #C8341F; padding: 8px 10px;">GALLERY 2</div>
+              <span style="color: #6E675C;">›</span>
+              <div style="border: 1px solid #C8341F; color: #C8341F; padding: 8px 10px;">GALLERY 3</div>
+              <span style="color: #6E675C;">›</span>
+              <div style="border: 1px dashed #E9E2CF; color: #E9E2CF; padding: 8px 10px;">FORK</div>
+            </div>
+            <div style="display: flex; gap: 12px; margin-top: 4px;">
+              <div style="flex: 1; border: 1px solid #2A2620; border-left: 3px solid #E9E2CF; padding: 10px 12px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF; letter-spacing: 1px;">
+                  ↑ ASCEND — "escape"</div>
+                <div class="note" style="margin-top: 5px;">You climb out — the cold version of a happy ending. You leave
+                  with a camera full of other people's deaths to sell. Anyone you carried out comes up with you.</div>
+              </div>
+              <div style="flex: 1; border: 1px solid #2A2620; border-left: 3px solid #C8341F; padding: 10px 12px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #C8341F; letter-spacing: 1px;">
+                  ↓ DESCEND — "deeper"</div>
+                <div class="note" style="margin-top: 5px;">You keep going down. You stop being a visitor and become part
+                  of the place. Nobody who chooses this is heard from again.</div>
+              </div>
+            </div>
+            <div class="note" style="border-top: 1px dashed #2A2620; padding-top: 10px;"><b
+                style="color: #E9E2CF;">Every gallery is sealed.</b> You breach it to get in, and it closes behind you —
+              no way back, nothing taken back. Each is its own buried pocket; you never quite know how far down the next
+              one waits, and a <i>fall</i> can take you much further than you meant to go.</div>
+          </div>
+          <!-- depth gauge -->
+          <div class="card" style="width: 300px; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">HOW FAR DOWN YOU ARE</div>
+            <div style="display: flex; gap: 14px; align-items: stretch;">
+              <div
+                style="width: 64px; background: #100E0B; border: 1px solid #2A2620; border-radius: 3px; position: relative; height: 200px; overflow: hidden;">
+                <div
+                  style="position: absolute; left: 0; right: 0; top: 0; background: repeating-linear-gradient(#C8341F 0 2px, transparent 2px 5px); animation: gaugefill 2.6s ease-in-out infinite alternate;">
+                </div>
+                <div
+                  style="position: absolute; left: 4px; top: 6px; font-family: 'Silkscreen', monospace; font-size: 7px; color: #6E675C;">
+                  0m</div>
+                <div
+                  style="position: absolute; left: 4px; bottom: 6px; font-family: 'Silkscreen', monospace; font-size: 7px; color: #6E675C;">
+                  deep</div>
+                <div
+                  style="position: absolute; left: 50%; top: 40%; transform: translateX(-50%); animation: descend 1.3s ease-in-out infinite alternate;">
+                  <div style="width: 16px; height: 16px; background: #E9E2CF;" class="spr"></div>
+                </div>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: center;">
+                <div style="font-family: 'Jacquard 12', monospace; font-size: 30px; color: #E9E2CF; line-height: 1;">
+                  −142m</div>
+                <div class="note">There are no floor numbers — only how far you have <span
+                    style="color: #E9E2CF;">fallen</span>, a single figure that climbs as the city closes over your
+                  head.</div>
+                <div class="note" style="color: #6E675C;">you only ever go down. the way out is never the way back.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ THE HUB ============ -->
+      <div class="sec">
+        <div class="seclabel">02 · THE FIELD OFFICE — WHERE YOU COME BACK TO</div>
+        <div data-screen-label="Hub"
+          style="width: 1320px; height: 460px; background: #12100D; border: 1px solid #2A2620; position: relative; overflow: hidden; display: flex; image-rendering: pixelated;">
+          <!-- pinboard -->
+          <div
+            style="flex: 1; border-right: 1px solid #221E18; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="pin">THE PINBOARD</div>
+              <div
+                style="font-family: 'Silkscreen', monospace; font-size: 8px; letter-spacing: 1px; color: #E9E2CF; border: 1px solid #3A352D; padding: 4px 9px;">
+                7 / 24 PINNED</div>
+            </div>
+            <div
+              style="flex: 1; position: relative; border: 1px solid #2A2620; background-color: #16130E; background-image: radial-gradient(rgba(233,226,207,0.05) 1px, transparent 1px); background-size: 7px 7px; overflow: hidden;">
+
+              <!-- red string (drawn behind cards; each connects two pin centers) -->
+              <div
+                style="position: absolute; left: 92px; top: 46px; width: 210px; height: 0; border-top: 1px solid #C8341F; opacity: 0.85; transform: rotate(-2.73deg); transform-origin: 0 0;">
+              </div>
+              <div
+                style="position: absolute; left: 302px; top: 36px; width: 221px; height: 0; border-top: 1px solid #C8341F; opacity: 0.85; transform: rotate(6.22deg); transform-origin: 0 0;">
+              </div>
+              <div
+                style="position: absolute; left: 302px; top: 36px; width: 225px; height: 0; border-top: 1px solid #C8341F; opacity: 0.85; transform: rotate(57.72deg); transform-origin: 0 0;">
+              </div>
+              <div
+                style="position: absolute; left: 92px; top: 46px; width: 202px; height: 0; border-top: 1px solid #C8341F; opacity: 0.85; transform: rotate(57.10deg); transform-origin: 0 0;">
+              </div>
+              <div
+                style="position: absolute; left: 202px; top: 216px; width: 220px; height: 0; border-top: 1px solid #C8341F; opacity: 0.85; transform: rotate(2.60deg); transform-origin: 0 0;">
+              </div>
+              <div
+                style="position: absolute; left: 422px; top: 226px; width: 194px; height: 0; border-top: 1px solid #C8341F; opacity: 0.85; transform: rotate(-58.93deg); transform-origin: 0 0;">
+              </div>
+              <div
+                style="position: absolute; left: 78px; top: 256px; width: 130px; height: 0; border-top: 1px solid #C8341F; opacity: 0.7; transform: rotate(-17.9deg); transform-origin: 0 0;">
+              </div>
+
+              <!-- polaroids: pin centered ~6px below card top -->
+              <div
+                style="position: absolute; left: 40px; top: 40px; width: 104px; transform: rotate(-3deg); background: #E4DCC6; padding: 5px 5px 0; box-shadow: 0 3px 5px rgba(0,0,0,0.5);">
+                <div style="height: 58px; background: #14110E; position: relative; overflow: hidden;">
+                  <div
+                    style="position: absolute; inset: 0; background: #E4DCC6; opacity: 0.6; -webkit-mask: url('../assets/art/enemy_drowned_lit.png') center/cover no-repeat; mask: url('../assets/art/enemy_drowned_lit.png') center/cover no-repeat;">
+                  </div>
+                </div>
+                <div
+                  style="font-family: 'Special Elite', monospace; font-size: 9px; color: #1B1815; text-align: center; padding: 3px 0;">
+                  THE DROWNED</div>
+              </div>
+              <div
+                style="position: absolute; left: 250px; top: 30px; width: 104px; transform: rotate(2deg); background: #E4DCC6; padding: 5px 5px 0; box-shadow: 0 3px 5px rgba(0,0,0,0.5);">
+                <div style="height: 58px; background: #14110E; position: relative; overflow: hidden;">
+                  <div
+                    style="position: absolute; inset: 0; background: #C8341F; opacity: 0.7; -webkit-mask: url('../assets/art/relic_dress_lit.png') center/contain no-repeat; mask: url('../assets/art/relic_dress_lit.png') center/contain no-repeat;">
+                  </div>
+                </div>
+                <div
+                  style="font-family: 'Special Elite', monospace; font-size: 9px; color: #1B1815; text-align: center; padding: 3px 0;">
+                  MASHA'S DRESS</div>
+              </div>
+              <div
+                style="position: absolute; left: 470px; top: 54px; width: 104px; transform: rotate(-2deg); background: #E4DCC6; padding: 5px 5px 0; box-shadow: 0 3px 5px rgba(0,0,0,0.5);">
+                <div style="height: 58px; background: #14110E; position: relative; overflow: hidden;">
+                  <div
+                    style="position: absolute; inset: 0; background: #E4DCC6; opacity: 0.6; -webkit-mask: url('../assets/art/scn_shrine_lit.png') center/cover no-repeat; mask: url('../assets/art/scn_shrine_lit.png') center/cover no-repeat;">
+                  </div>
+                </div>
+                <div
+                  style="font-family: 'Special Elite', monospace; font-size: 9px; color: #1B1815; text-align: center; padding: 3px 0;">
+                  GALLERY III</div>
+              </div>
+              <div
+                style="position: absolute; left: 370px; top: 220px; width: 104px; transform: rotate(-4deg); background: #E4DCC6; padding: 5px 5px 0; box-shadow: 0 3px 5px rgba(0,0,0,0.5);">
+                <div style="height: 58px; background: #14110E; position: relative; overflow: hidden;">
+                  <div
+                    style="position: absolute; inset: 0; background: #E4DCC6; opacity: 0.6; -webkit-mask: url('../assets/art/pale_lit.png') center/cover no-repeat; mask: url('../assets/art/pale_lit.png') center/cover no-repeat;">
+                  </div>
+                </div>
+                <div
+                  style="font-family: 'Special Elite', monospace; font-size: 9px; color: #1B1815; text-align: center; padding: 3px 0;">
+                  PALE COUNTER</div>
+              </div>
+              <!-- locked / unknown polaroid -->
+              <div
+                style="position: absolute; left: 150px; top: 210px; width: 104px; transform: rotate(3deg); background: #E4DCC6; padding: 5px 5px 0; box-shadow: 0 3px 5px rgba(0,0,0,0.5);">
+                <div
+                  style="height: 58px; background: #14110E; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                  <div style="font-family: 'Silkscreen', monospace; font-size: 22px; color: #3A352D;">?</div>
+                  <div
+                    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(-8deg); border: 1px solid #C8341F; color: #C8341F; font-family: 'Silkscreen', monospace; font-size: 7px; letter-spacing: 1px; padding: 2px 5px;">
+                    MISSING</div>
+                </div>
+                <div
+                  style="font-family: 'Special Elite', monospace; font-size: 9px; color: #6b6353; text-align: center; padding: 3px 0;">
+                  unidentified</div>
+              </div>
+              <!-- handwritten scrap -->
+              <div
+                style="position: absolute; left: 30px; top: 250px; width: 96px; transform: rotate(-4deg); background: #D8CFB6; padding: 7px 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.5); font-family: 'Special Elite', monospace; font-size: 10px; color: #1B1815; line-height: 1.15;">
+                who sealed the gallery?</div>
+
+              <!-- pushpins (on top of cards) -->
+              <div
+                style="position: absolute; left: 88px; top: 42px; width: 9px; height: 9px; border-radius: 50%; background: #C8341F; box-shadow: 0 0 0 1px #4a1810, 0 2px 2px rgba(0,0,0,0.6);">
+              </div>
+              <div
+                style="position: absolute; left: 298px; top: 32px; width: 9px; height: 9px; border-radius: 50%; background: #E9E2CF; box-shadow: 0 0 0 1px #5a554a, 0 2px 2px rgba(0,0,0,0.6);">
+              </div>
+              <div
+                style="position: absolute; left: 518px; top: 56px; width: 9px; height: 9px; border-radius: 50%; background: #E9E2CF; box-shadow: 0 0 0 1px #5a554a, 0 2px 2px rgba(0,0,0,0.6);">
+              </div>
+              <div
+                style="position: absolute; left: 418px; top: 222px; width: 9px; height: 9px; border-radius: 50%; background: #C8341F; box-shadow: 0 0 0 1px #4a1810, 0 2px 2px rgba(0,0,0,0.6);">
+              </div>
+              <div
+                style="position: absolute; left: 198px; top: 212px; width: 9px; height: 9px; border-radius: 50%; background: #C8341F; box-shadow: 0 0 0 1px #4a1810, 0 2px 2px rgba(0,0,0,0.6);">
+              </div>
+              <div
+                style="position: absolute; left: 74px; top: 252px; width: 9px; height: 9px; border-radius: 50%; background: #E9E2CF; box-shadow: 0 0 0 1px #5a554a, 0 2px 2px rgba(0,0,0,0.6);">
+              </div>
+
+              <div
+                style="position: absolute; right: 10px; bottom: 8px; font-family: 'Special Elite', monospace; font-size: 11px; color: #6E675C;">
+                photos · relics · entities · lore — pinned &amp; linked</div>
+            </div>
+            <div class="note" style="color: #6E675C;">lay one of your dead to rest — return a photograph, put down what
+              they became — and they are pinned here at last as <span style="color:#E9E2CF;">resolved</span>.</div>
+          </div>
+          <!-- character + descend -->
+          <div
+            style="width: 300px; border-right: 1px solid #221E18; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+            <div class="pin" style="align-self: flex-start;">TODAY'S DESCENT</div>
+            <div style="width: 110px; height: 180px; position: relative; margin-top: 6px;">
+              <div
+                style="position: absolute; inset: 0; background: #E9E2CF; -webkit-mask: url('../assets/art/char_journalist_lit.png') center/contain no-repeat; mask: url('../assets/art/char_journalist_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div style="font-family: 'Jacquard 12', monospace; font-size: 26px; color: #E9E2CF; line-height: 1;">The
+              Journalist</div>
+            <div style="display: flex; gap: 6px;">
+              <div style="width: 22px; height: 22px; border: 1px solid #E9E2CF; position: relative;">
+                <div
+                  style="position: absolute; inset: 3px; background: #E9E2CF; -webkit-mask: url('../assets/art/char_ghost_lit.png') center/contain no-repeat; mask: url('../assets/art/char_ghost_lit.png') center/contain no-repeat;">
+                </div>
+              </div>
+              <div style="width: 22px; height: 22px; border: 1px solid #6E675C; opacity: 0.5;"></div>
+              <div style="width: 22px; height: 22px; border: 1px solid #6E675C; opacity: 0.5;"></div>
+            </div>
+            <div
+              style="margin-top: auto; border: 2px solid #E9E2CF; padding: 9px 40px; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 4px; color: #E9E2CF; cursor: pointer;"
+              style-hover="background: #E9E2CF; color: #12100D;">DESCEND</div>
+          </div>
+          <!-- contact-sheet saves -->
+          <div style="width: 280px; padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">SAVES — A CONTACT SHEET</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div style="border: 1px solid #E9E2CF; aspect-ratio: 1; position: relative; overflow: hidden;">
+                <div
+                  style="position: absolute; inset: 0; background: #E9E2CF; opacity: 0.5; -webkit-mask: url('../assets/art/scn_shrine_lit.png') center/cover no-repeat; mask: url('../assets/art/scn_shrine_lit.png') center/cover no-repeat;">
+                </div>
+                <div
+                  style="position: absolute; left: 3px; bottom: 2px; font-family: 'Silkscreen', monospace; font-size: 6px; color: #E9E2CF;">
+                  RUN 07 · −142m</div>
+              </div>
+              <div
+                style="border: 1px solid #2A2620; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #6E675C;">
+                ＋ new</div>
+              <div
+                style="border: 1px solid #2A2620; aspect-ratio: 1; opacity: 0.5; display: flex; align-items: center; justify-content: center; font-family: 'Silkscreen', monospace; font-size: 7px; color: #6E675C;">
+                LOST · −88m</div>
+              <div
+                style="border: 1px solid #2A2620; aspect-ratio: 1; opacity: 0.5; display: flex; align-items: center; justify-content: center; font-family: 'Silkscreen', monospace; font-size: 7px; color: #6E675C;">
+                LOST · −60m</div>
+            </div>
+            <div class="note" style="color: #6E675C; margin-top: 4px;">the last frame of every run · no dates, only how
+              deep it ended.</div>
+          </div>
+        </div>
+        <div class="note">One room is your lobby, your archive, and the only place that feels safe. What you carry up
+          out of the dark is never power — it is knowledge. Faces. Names. What really happened down there, and the
+          weight of holding it.</div>
+      </div>
+
+      <!-- ============ HYSTERIA SYSTEM ============ -->
+      <div class="sec">
+        <div class="seclabel">03 · HYSTERIA — THE FEAR THAT OUTLIVES THE THREAT</div>
+        <div style="display: flex; gap: 18px;">
+          <div class="card" style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
+            <div class="pin">THRESHOLDS</div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div
+                style="display: flex; gap: 12px; align-items: flex-start; border-left: 3px solid #6FB544; padding-left: 12px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 11px; color: #9FE8B0; width: 92px;">STEADY
+                </div>
+                <div class="note">Narration reliable. Map draws true. Baseline.</div>
+              </div>
+              <div
+                style="display: flex; gap: 12px; align-items: flex-start; border-left: 3px solid #E0921E; padding-left: 12px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 11px; color: #E8D49A; width: 92px;">RATTLED
+                </div>
+                <div class="note">The voice turns <span style="color: #E9E2CF;">unreliable</span> — narration swaps to
+                  the "rotted" alternate text. Sometimes the mad version reads truer. You can't tell which.</div>
+              </div>
+              <div
+                style="display: flex; gap: 12px; align-items: flex-start; border-left: 3px solid #C8341F; padding-left: 12px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 11px; color: #C8341F; width: 92px;">
+                  BREAKING</div>
+                <div class="note">The map <span style="color: #C8341F;">breaks</span> — your page degrades into random
+                  strokes, stray lines and symbols, and it takes a working locator down with it.</div>
+              </div>
+              <div
+                style="display: flex; gap: 12px; align-items: flex-start; border-left: 3px solid #C8341F; padding-left: 12px; background: rgba(200,52,31,0.08);">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 11px; color: #C8341F; width: 92px;">THE END
+                </div>
+                <div class="note"><b style="color: #E9E2CF;">When it fills, you have one breath left.</b> Find something
+                  to bring it down, or you <span style="color: #C8341F;">become a permanent part of the
+                    catacombs</span>. There is rarely anything to hand. That is the point.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="width: 440px; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">RAISES / RELIEVES</div>
+            <div style="display: flex; gap: 12px;">
+              <div style="flex: 1;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #C8341F; margin-bottom: 6px;">▲
+                  RAISES</div>
+                <div class="note" style="line-height: 1.5;">darkness / a dead flashlight · something standing too close
+                  · photographing the dead · being lost · a survivor who panics · the worst kinds of place</div>
+              </div>
+              <div style="flex: 1; border-left: 1px dashed #2A2620; padding-left: 12px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #9FE8B0; margin-bottom: 6px;">▼
+                  RELIEVES</div>
+                <div class="note" style="line-height: 1.5;">light · a place to rest · the shrine · a steady hand beside
+                  you · a sedative, a saint's candle · laying one of the dead to rest</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ META-TAG ENGINE ============ -->
+      <div class="sec">
+        <div class="seclabel">04 · EVERY GALLERY IS MADE OF SOMETHING</div>
+        <div style="display: flex; gap: 18px;">
+          <div class="card" style="width: 560px; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">WHAT A PLACE IS MADE OF</div>
+            <div class="note">Every gallery is built from a handful of kinds of place — flooded, ritual, military,
+              worse. What lives there, what you find, what you read on the walls: all of it follows from what the place
+              <i>is</i>. No two descents are made of the same things.
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px;">
+              <div
+                style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF; border: 1px solid #4A463F; padding: 4px 8px;">
+                military</div>
+              <div
+                style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF; border: 1px solid #4A463F; padding: 4px 8px;">
+                radiated</div>
+              <div
+                style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF; border: 1px solid #4A463F; padding: 4px 8px;">
+                flooded</div>
+              <div
+                style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF; border: 1px solid #4A463F; padding: 4px 8px;">
+                ritual</div>
+              <div
+                style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF; border: 1px solid #4A463F; padding: 4px 8px;">
+                soviet</div>
+              <div
+                style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #6E675C; border: 1px solid #4A463F; padding: 4px 8px;">
+                and worse</div>
+            </div>
+          </div>
+          <div class="card" style="flex: 1;">
+            <div class="pin" style="margin-bottom: 8px;">WHO YOU BRING CHANGES WHAT YOU FIND</div>
+            <div class="note" style="margin-top: 8px;">The people you bring down with you aren't extra hands. They're
+              <span style="color: #E9E2CF;">lenses</span> — each one sees the same room differently and opens doors the
+              others can't. And each one can die in it.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ DEAD AS CONTENT ============ -->
+      <div class="sec">
+        <div class="seclabel">05 · THE DEAD DON'T LEAVE</div>
+        <div style="display: flex; gap: 18px;">
+          <div class="card" style="width: 460px; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">A LOST RECORD — WRITTEN ON ANY DEATH</div>
+            <div class="note">Yours or someone you brought down with you. From the very first descent the dark already
+              holds a handful of <span style="color: #E9E2CF;">lost souls who went before you</span> — and you can never
+              quite tell their dead from your own.</div>
+          </div>
+          <div class="card" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">HOW THEY COME BACK — RARELY, AND NEVER THE SAME WAY</div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 10px;">
+                <div class="tag" style="border-color:#E9E2CF;color:#E9E2CF;">BODY</div>
+                <div class="note" style="flex:1;">found slumped in the dark — what they were carrying, their last
+                  photograph, a torn corner of their map.</div>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <div class="tag" style="border-color:#E9E2CF;color:#E9E2CF;">TERMINAL</div>
+                <div class="note" style="flex:1;">an old terminal lists them missing — no date, just a name and a
+                  silence.</div>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <div class="tag">REVENANT</div>
+                <div class="note" style="flex:1;">they have <span style="color:#C8341F;">become a thing</span>, still
+                  wearing what they died in; the way it moves echoes how they went. put it down once and it stays down.
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <div class="tag" style="border-color:#6E675C;color:#6E675C;">WHISPER</div>
+                <div class="note" style="flex:1;">only their last words, carried on the dark. the cheapest haunting, and
+                  the worst.</div>
+              </div>
+            </div>
+            <div class="note" style="border-top: 1px dashed #2A2620; padding-top: 8px; color: #6E675C;">Return their
+              photograph, or put what they became to rest, and they are marked <b style="color:#E9E2CF;">resolved</b> at
+              last. Closure is the only reward. It is enough.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ENCOUNTER HERO ============ -->
+      <div class="sec">
+        <div class="seclabel">06 · DOWN IN THE DARK — THE ENCOUNTER</div>
+        <div class="note" style="margin-top: -6px;">A dark, flashlight-lit scene, framed like a case file someone is
+          quietly building against you — a typewriter slug, a taped exhibit photo, a stamp, a note in the margin. Your
+          fear sits first in the row of gauges, filling toward red as you go.</div>
+        <div data-screen-label="Encounter - master"
+          style="width: 1320px; height: 600px; background: #14110D; position: relative; overflow: hidden; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; image-rendering: pixelated;">
+          <!-- case-file slug + meters -->
+          <div
+            style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #4A463F; padding-bottom: 10px;">
+            <div>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 6px;"><span
+                  style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #C8341F;">HYS</span>
+                <div style="width: 92px; height: 11px; border: 1px solid #C8341F; padding: 1px;">
+                  <div style="height: 100%; width: 78%; background: #C8341F;"></div>
+                </div><span style="font-size: 15px; color: #C8341F;">78</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px;"><span
+                  style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #6E675C;">FLA</span>
+                <div style="width: 80px; height: 11px; border: 1px solid #E9E2CF; padding: 1px;">
+                  <div style="height: 100%; width: 41%; background: #E9E2CF;"></div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px;"><span
+                  style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #6E675C;">WAT</span>
+                <div style="width: 80px; height: 11px; border: 1px solid #E9E2CF; padding: 1px;">
+                  <div style="height: 100%; width: 60%; background: #E9E2CF;"></div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px;"><span
+                  style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #6E675C;">FOO</span>
+                <div style="width: 80px; height: 11px; border: 1px solid #E9E2CF; padding: 1px;">
+                  <div style="height: 100%; width: 50%; background: #E9E2CF;"></div>
+                </div>
+              </div>
+              <div style="font-size: 15px; color: #8F887B;">−142m</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 18px; flex: 1; min-height: 0;">
+            <!-- scene + exhibit -->
+            <div style="width: 700px; position: relative;">
+              <div
+                style="position: absolute; left: 36px; top: 24px; right: 36px; bottom: 24px; background: #E9E2CF; -webkit-mask: url('../assets/art/pale_lit.png') center/contain no-repeat; mask: url('../assets/art/pale_lit.png') center/contain no-repeat;">
+              </div>
+              <div
+                style="position: absolute; left: 16px; top: 12px; width: 22px; height: 22px; border-left: 2px solid #E9E2CF; border-top: 2px solid #E9E2CF; opacity: 0.6;">
+              </div>
+              <div
+                style="position: absolute; right: 16px; top: 12px; width: 22px; height: 22px; border-right: 2px solid #E9E2CF; border-top: 2px solid #E9E2CF; opacity: 0.6;">
+              </div>
+              <div
+                style="position: absolute; left: 16px; bottom: 12px; width: 22px; height: 22px; border-left: 2px solid #E9E2CF; border-bottom: 2px solid #E9E2CF; opacity: 0.6;">
+              </div>
+              <div
+                style="position: absolute; right: 16px; bottom: 12px; width: 22px; height: 22px; border-right: 2px solid #E9E2CF; border-bottom: 2px solid #E9E2CF; opacity: 0.6;">
+              </div>
+              <div
+                style="position: absolute; right: 40px; top: 22px; font-family: 'Silkscreen', monospace; font-size: 10px; color: #C8341F; animation: blink 0.8s steps(1) infinite;">
+                ● REC</div>
+              <!-- path hotspots -->
+              <div title="left"
+                style="position: absolute; left: 150px; bottom: 70px; width: 150px; height: 120px; border: 1px dashed rgba(233,226,207,0.5); clip-path: polygon(30% 0,100% 14%,80% 100%,0 84%); cursor: crosshair;">
+              </div>
+              <div
+                style="position: absolute; left: 196px; bottom: 120px; font-family: 'Silkscreen', monospace; font-size: 10px; color: #E9E2CF; text-shadow: 0 0 6px #000;">
+                ◄ LEFT</div>
+              <div title="right"
+                style="position: absolute; left: 380px; bottom: 70px; width: 150px; height: 120px; border: 1px dashed rgba(200,52,31,0.5); clip-path: polygon(0 14%,70% 0,100% 84%,20% 100%); cursor: crosshair;">
+              </div>
+            </div>
+            <!-- parser + narration + choices -->
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; min-height: 0;">
+              <div style="font-size: 19px; color: #E9E2CF; opacity: 0.65; font-family: Silkscreen">› LOOK AT pale
+                shape<span style="animation: blink 1.1s steps(1) infinite;">_</span></div>
+              <div style="font-size: 20px; color: #E9E2CF; line-height: 1.3; font-family: VT323">The dripping is too
+                regular. Like counting. <span style="color: #C8341F; font-family: VT323">The pale thing at the fork is
+                  closer than it was — though you never saw it move.</span> <span
+                  style="color: #6E675C; font-size: 15px;">(RATTLED — the voice may be lying)</span></div>
+              <!-- status chips -->
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                <div
+                  style="display: flex; align-items: center; gap: 4px; border: 1px solid #C8341F; padding: 3px 7px; font-size: 13px; color: #C8341F; font-family: Silkscreen">
+                  <div
+                    style="width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 8px solid #C8341F;">
+                  </div>BLEED 2
+                </div>
+                <div
+                  style="display: flex; align-items: center; gap: 4px; border: 1px solid #E9E2CF; padding: 3px 7px; font-size: 13px; color: #E9E2CF; font-family: Silkscreen">
+                  <div style="width: 8px;height: 8px;background: #E9E2CF;transform: rotate(45deg);"></div>RAD 12
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 7px; margin-top: auto;">
+                <div
+                  style="display: flex; gap: 8px; align-items: baseline; border: 1px solid #E9E2CF; background: #E9E2CF; color: #14110D; padding: 6px 9px;">
+                  <span>&gt;</span><span style="font-size: 18px; flex: 1; font-family: VT323">[PER] Look closer at the
+                    pale shape</span>
+                </div>
+                <div
+                  style="display: flex; gap: 8px; align-items: baseline; border: 1px solid transparent; color: #E9E2CF; padding: 6px 9px;">
+                  <span>&gt;</span><span style="font-size: 18px; flex: 1; font-family: VT323">[AGI] Squeeze down the
+                    right passage</span>
+                </div>
+                <div
+                  style="display: flex; gap: 8px; align-items: baseline; border: 1px solid transparent; color: #E9E2CF; padding: 6px 9px;">
+                  <span>&gt;</span><span style="font-size: 18px; flex: 1; font-family: VT323">Move on without
+                    looking</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- verb bar -->
+          <div
+            style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #4A463F; padding-top: 8px; font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 1px; color: #6E675C;">
+            <div style="display: flex; gap: 14px;">
+              <span>WALK</span><span>LOOK</span><span>TAKE</span><span>TALK</span><span style="color: #E9E2CF;">✎
+                MAP</span><span style="color: #E9E2CF;">⚷ BELT</span>
+            </div>
+            <div>NO TAKEBACKS — IT REMEMBERS WHAT YOU DID</div>
+          </div>
+        </div>
+        <div class="note">Margin note, taped exhibit and stamp carry the bureaucratic dread without turning the screen
+          into a literal form — the scene stays dark, so the only thing you trust is a flashlight that is steadily
+          running down.</div>
+      </div>
+
+      <!-- ============ RESOLUTION FAMILY ============ -->
+      <div class="sec">
+        <div class="seclabel">07 · HOW IT PLAYS — FOUR WAYS TO MEET A MOMENT</div>
+        <div class="note" style="margin-top: -6px;">Four ways a moment can go — each one works whether you are fighting
+          for your life or only trying to look closer. A single turn of a card tells you how it ended.</div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;">
+          <div class="card" style="display: flex; flex-direction: column; gap: 9px;">
+            <div class="pin">HOTSPOTS</div>
+            <div style="height: 110px; background: #12100D; border: 1px solid #2A2620; position: relative;">
+              <div
+                style="position: absolute; left: 30px; top: 28px; width: 26px; height: 26px; border: 2px solid #C8341F; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 4px; height: 4px; background: #C8341F; border-radius: 50%;"></div>
+              </div>
+              <div
+                style="position: absolute; left: 90px; top: 60px; width: 26px; height: 26px; border: 2px solid #C8341F; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 4px; height: 4px; background: #C8341F; border-radius: 50%;"></div>
+              </div>
+            </div>
+            <div class="note">click targets on the scene. <b style="color:#E9E2CF;">combat:</b> strike a limb. <b
+                style="color:#E9E2CF;">check:</b> examine spatial detail.</div>
+          </div>
+          <div class="card" style="display: flex; flex-direction: column; gap: 9px;">
+            <div class="pin">TIMING</div>
+            <div
+              style="height: 110px; background: #12100D; border: 1px solid #2A2620; display: flex; align-items: center; padding: 0 12px;">
+              <div style="width: 100%; position: relative; height: 22px; border: 1px solid #E9E2CF;">
+                <div
+                  style="position: absolute; left: 58%; top: 0; bottom: 0; width: 16%; background: rgba(200,52,31,0.3); border-left: 1px solid #C8341F; border-right: 1px solid #C8341F;">
+                </div>
+                <div style="position: absolute; left: 64%; top: -4px; bottom: -4px; width: 3px; background: #E9E2CF;">
+                </div>
+              </div>
+            </div>
+            <div class="note">hit the window. <b style="color:#E9E2CF;">combat:</b> strike on the swing. <b
+                style="color:#E9E2CF;">check:</b> time a jump / grab.</div>
+          </div>
+          <div class="card" style="display: flex; flex-direction: column; gap: 9px;">
+            <div class="pin" style="color:#C8341F;">THE DECK</div>
+            <div
+              style="height: 110px; background: #12100D; border: 1px solid #2A2620; display: flex; align-items: center; justify-content: center; gap: 6px;">
+              <div style="width: 34px; height: 50px; border: 1px solid #E9E2CF;"></div>
+              <div style="width: 34px; height: 50px; border: 2px solid #C8341F;"></div>
+              <div style="width: 34px; height: 50px; border: 1px solid #E9E2CF;"></div>
+            </div>
+            <div class="note">play a card. <b style="color:#E9E2CF;">combat:</b> attack/dodge/pray. <b
+                style="color:#E9E2CF;">check:</b> a perception draw. shares the tarot language.</div>
+          </div>
+          <div class="card" style="display: flex; flex-direction: column; gap: 9px;">
+            <div class="pin">NERVE</div>
+            <div
+              style="height: 110px; background: #12100D; border: 1px solid #2A2620; display: flex; align-items: center; padding: 0 12px;">
+              <div style="width: 100%; height: 22px; border: 1px solid #E9E2CF; position: relative; overflow: hidden;">
+                <div
+                  style="position: absolute; left: 0; top: 0; bottom: 0; width: 56%; background: repeating-linear-gradient(90deg,#E9E2CF 0 4px,transparent 4px 8px);">
+                </div>
+                <div style="position: absolute; left: 56%; top: -4px; bottom: -4px; width: 3px; background: #E9E2CF;">
+                </div>
+              </div>
+            </div>
+            <div class="note">hold ground. <b style="color:#E9E2CF;">combat:</b> out-stare a watcher. <b
+                style="color:#E9E2CF;">check:</b> endure / brace.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ NAVIGATION + MAP ============ -->
+      <div class="sec">
+        <div class="seclabel">08 · FINDING YOUR WAY, OR LOSING IT</div>
+        <div style="display: flex; gap: 18px;">
+          <div class="card" style="width: 470px; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">THE WAY THROUGH</div>
+            <div class="note">Every gallery is a tangle of passages that truly connect — corridors that loop back,
+              junctions that meet. You read the way ahead from where you stand, and commit to it one passage at a time.
+            </div>
+            <div class="note">The ways out are drawn into the scene itself; lean in and you might guess where one leads.
+              The ones you haven't scouted read only <span style="color:#C8341F;">«???»</span>.</div>
+          </div>
+          <div class="card" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">THE MAP, IF YOU CAN TRUST IT</div>
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1; border: 1px solid #2A2620; padding: 10px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF;">A WORKING LOCATOR
+                </div>
+                <div class="note" style="margin-top: 4px;">working locator draws the schematic for you.</div>
+              </div>
+              <div style="flex: 1; border: 1px solid #2A2620; padding: 10px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF;">NO LOCATOR</div>
+                <div class="note" style="margin-top: 4px;">a blank page and your own count of paces. you draw it
+                  yourself, and live with what you got wrong.</div>
+              </div>
+              <div style="flex: 1; border: 1px solid #C8341F; padding: 10px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #C8341F;">TOO FAR GONE</div>
+                <div class="note" style="margin-top: 4px;"><span style="color:#C8341F;">the page turns to scrawl</span>,
+                  and no locator can fix a broken mind.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ INVENTORY + BELT ============ -->
+      <div class="sec">
+        <div class="seclabel">09 · WHAT YOU CARRY</div>
+        <div data-screen-label="Inventory + belt"
+          style="width: 1320px; height: 380px; background: #14110D; border: 1px solid #2A2620; position: relative; overflow: hidden; padding: 16px 18px; display: flex; gap: 20px; image-rendering: pixelated;">
+          <!-- list -->
+          <div style="width: 460px; display: flex; flex-direction: column; gap: 5px;">
+            <div class="pin" style="margin-bottom: 4px;">THE PACK</div>
+            <div style="display: flex; align-items: center; gap: 10px; padding: 5px 8px; color: #E9E2CF;">
+              <div
+                style="width: 22px; height: 22px; background: #E9E2CF; color: #14110D; display: flex; align-items: center; justify-content: center; font-family: 'Silkscreen', monospace; font-size: 9px;">
+                F</div><span style="font-size: 18px; flex: 1; font-family: VT323">FLASHLIGHT</span><span
+                style="font-size: 13px; opacity: 0.5;">41%</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; padding: 5px 8px; color: #E9E2CF;">
+              <div
+                style="width: 22px; height: 22px; background: #E9E2CF; color: #14110D; display: flex; align-items: center; justify-content: center; font-family: 'Silkscreen', monospace; font-size: 9px;">
+                C</div><span style="font-size: 18px; flex: 1; font-family: VT323">CAMERA</span><span
+                style="font-size: 13px; opacity: 0.5;">12 shots</span>
+            </div>
+            <div
+              style="display: flex; align-items: center; gap: 10px; padding: 5px 8px; background: #E9E2CF; color: #14110D;">
+              <div
+                style="width: 22px; height: 22px; background: #14110D; color: #E9E2CF; display: flex; align-items: center; justify-content: center; font-family: 'Silkscreen', monospace; font-size: 9px;">
+                S</div><span style="font-size: 18px; flex: 1; font-family: VT323">SEDATIVE</span><span
+                style="font-size: 13px; opacity: 0.7;">×1 · vent · selected</span>
+            </div>
+            <div
+              style="display: flex; align-items: center; gap: 10px; padding: 5px 8px; color: #E9E2CF; font-family: Silkscreen">
+              <div
+                style="width: 22px; height: 22px; background: #E9E2CF; color: #14110D; display: flex; align-items: center; justify-content: center; font-family: 'Silkscreen', monospace; font-size: 9px;">
+                B</div><span style="font-size: 18px; flex: 1; font-family: VT323">BANDAGE</span><span
+                style="font-size: 13px; opacity: 0.5;">×2</span>
+            </div>
+            <div
+              style="border: 1px solid #4A463F; padding: 8px 10px; margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
+              <div style="font-size: 16px; color: #E9E2CF; font-family: VT323">SEDATIVE — quiets the fear for a little
+                while. your second wind.</div>
+              <div style="display: flex; gap: 7px; margin-top: 2px;">
+                <div
+                  style="border: 1px solid #E9E2CF; padding: 4px 12px; font-family: Silkscreen; font-size: 8px; color: #E9E2CF">
+                  USE</div>
+                <div
+                  style="border: 1px solid #C8341F; padding: 4px 12px; font-family: 'Silkscreen', monospace; font-size: 8px; color: #C8341F;">
+                  ▶ ASSIGN TO BELT</div>
+              </div>
+            </div>
+          </div>
+          <!-- belt -->
+          <div
+            style="flex: 1; border-left: 1px solid #221E18; padding-left: 20px; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">THE BELT — WHAT'S IN REACH</div>
+            <div style="display: flex; gap: 10px;">
+              <div
+                style="width: 70px; height: 70px; border: 1px solid #E9E2CF; position: relative; display: flex; align-items: center; justify-content: center;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 11px; color: #E9E2CF;">F</div>
+                <div
+                  style="position: absolute; left: 2px; top: 1px; font-family: 'Silkscreen', monospace; font-size: 7px; color: #6E675C;">
+                  1</div>
+              </div>
+              <div
+                style="width: 70px; height: 70px; border: 1px solid #E9E2CF; position: relative; display: flex; align-items: center; justify-content: center;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 11px; color: #E9E2CF;">C</div>
+                <div
+                  style="position: absolute; left: 2px; top: 1px; font-family: 'Silkscreen', monospace; font-size: 7px; color: #6E675C;">
+                  2</div>
+              </div>
+              <div
+                style="width: 70px; height: 70px; border: 2px solid #C8341F; position: relative; display: flex; align-items: center; justify-content: center;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 11px; color: #C8341F;">S</div>
+                <div
+                  style="position: absolute; left: 2px; top: 1px; font-family: 'Silkscreen', monospace; font-size: 7px; color: #C8341F;">
+                  3 ◀ assigning</div>
+              </div>
+              <div
+                style="width: 70px; height: 70px; border: 1px dashed #4A463F; position: relative; display: flex; align-items: center; justify-content: center; color: #4A463F;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 8px;">EMPTY</div>
+                <div
+                  style="position: absolute; left: 2px; top: 1px; font-family: 'Silkscreen', monospace; font-size: 7px; color: #6E675C;">
+                  4</div>
+              </div>
+            </div>
+            <div class="note" style="font-family: Silkscreen">Only what's on the belt is ever in reach when something is
+              already on top of you. You set it in the quiet — and you live with that choice in the dark.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ CAST ============ -->
+      <div class="sec">
+        <div class="seclabel">10 · WHO GOES DOWN</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+          <div class="card" style="display: flex; gap: 14px;">
+            <div style="width: 80px; height: 130px; flex-shrink: 0; position: relative;">
+              <div
+                style="position: absolute; inset: 0; background: #E9E2CF; -webkit-mask: url('../assets/art/char_journalist_lit.png') center/contain no-repeat; mask: url('../assets/art/char_journalist_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <div style="font-family: 'Silkscreen', monospace; font-size: 10px; color: #CFC6B2;">THE JOURNALIST</div>
+              <div class="note">starts with the <span style="color:#E9E2CF;">camera</span>. turns the worst thing she
+                has ever seen into a photograph worth selling.</div>
+            </div>
+          </div>
+          <div class="card" style="display: flex; gap: 14px;">
+            <div style="width: 80px; height: 130px; flex-shrink: 0; position: relative;">
+              <div
+                style="position: absolute; inset: 0; background: #E9E2CF; -webkit-mask: url('../assets/art/char_ghost_lit.png') center/contain no-repeat; mask: url('../assets/art/char_ghost_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <div style="font-family: 'Silkscreen', monospace; font-size: 10px; color: #CFC6B2;">THE GHOST HUNTER</div>
+              <div class="note">no camera — but he feels the things in the next room before they feel him. fragile.
+              </div>
+            </div>
+          </div>
+          <div class="card" style="display: flex; gap: 14px;">
+            <div style="width: 80px; height: 130px; flex-shrink: 0; position: relative;">
+              <div
+                style="position: absolute; inset: 0; background: #E9E2CF; -webkit-mask: url('../assets/art/char_raver_lit.png') center/contain no-repeat; mask: url('../assets/art/char_raver_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <div style="font-family: 'Silkscreen', monospace; font-size: 10px; color: #CFC6B2;">THE RAVER</div>
+              <div class="note">no camera — just a second light and no instinct at all for staying small.</div>
+            </div>
+          </div>
+        </div>
+        <div class="note" style="margin-top: -4px;">Every one of them came down here on purpose, for their own reasons,
+          and each sees the catacombs differently. The rest of the cast is still below — you unlock them by carrying
+          them out alive.</div>
+      </div>
+
+      <!-- ============ RECRUITS + SOLDIER ============ -->
+      <div class="sec">
+        <div class="seclabel">11 · THE ONES YOU FIND DOWN THERE</div>
+        <div style="display: flex; gap: 18px;">
+          <div class="card" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">THE RECRUIT LOOP</div>
+            <div class="note">Find someone still alive down there and you can choose to take them with you. They open
+              doors you couldn't alone — and they panic, they slow you, they can die on the way out. Carry one to the
+              surface and they are yours. Leaving them behind should cost you something.</div>
+          </div>
+          <div class="card" style="width: 520px; display: flex; gap: 16px;">
+            <div
+              style="width: 96px; height: 150px; flex-shrink: 0; position: relative; background: #12100D; border: 1px solid #2A2620;">
+              <div
+                style="position: absolute; inset: 6px; background: #C8341F; -webkit-mask: url('../assets/art/char_journalist_lit.png') center/contain no-repeat; mask: url('../assets/art/char_journalist_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="font-family: 'Silkscreen', monospace; font-size: 11px; color: #C8341F;">THE GAS-MASK SOLDIER
+              </div>
+              <div class="note">The war never ended for him — your theme in one body. A three-state figure:</div>
+              <div class="note">· <span style="color:#E9E2CF;">a guide</span>, if you answer in his reality — he will
+                tell you things, open things long sealed.</div>
+              <div class="note">· <span style="color:#C8341F;">a death</span>, if you break them. standing near him is
+                its own slow poison.</div>
+              <div class="note">· and, almost never, under the hardest road of all — <span
+                  style="color:#9FE8B0;">someone you might just save</span>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ENEMIES ============ -->
+      <div class="sec">
+        <div class="seclabel">12 · WHAT WAITS BELOW</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
+          <div class="card" style="display: flex; gap: 12px;">
+            <div
+              style="width: 80px; height: 80px; flex-shrink: 0; background: #12100D; border: 1px solid #2A2620; position: relative;">
+              <div
+                style="position: absolute; inset: 6px; background: #E9E2CF; -webkit-mask: url('../assets/art/pale_lit.png') center/contain no-repeat; mask: url('../assets/art/pale_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div>
+              <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF;">PALE COUNTER</div>
+              <div class="note">won't move while watched · weak to sudden light</div>
+              <div class="tag" style="margin-top: 4px; display: inline-block;">stare</div>
+            </div>
+          </div>
+          <div class="card" style="display: flex; gap: 12px;">
+            <div
+              style="width: 80px; height: 80px; flex-shrink: 0; background: #12100D; border: 1px solid #2A2620; position: relative;">
+              <div
+                style="position: absolute; inset: 6px; background: #E9E2CF; -webkit-mask: url('../assets/art/enemy_drowned_lit.png') center/contain no-repeat; mask: url('../assets/art/enemy_drowned_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div>
+              <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF;">THE DROWNED</div>
+              <div class="note">rises in the flooded dark · cold where it touches you</div>
+              <div class="tag" style="margin-top: 4px; display: inline-block;">flooded</div>
+            </div>
+          </div>
+          <div class="card" style="display: flex; gap: 12px;">
+            <div
+              style="width: 80px; height: 80px; flex-shrink: 0; background: #12100D; border: 1px solid #2A2620; position: relative;">
+              <div
+                style="position: absolute; inset: 6px; background: #E9E2CF; -webkit-mask: url('../assets/art/enemy_crawler_lit.png') center/contain no-repeat; mask: url('../assets/art/enemy_crawler_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div>
+              <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF;">THE CRAWLER</div>
+              <div class="note">ceiling-bound · it waits for you to look down</div>
+              <div class="tag" style="margin-top: 4px; display: inline-block;">rush</div>
+            </div>
+          </div>
+          <div class="card" style="display: flex; gap: 12px;">
+            <div
+              style="width: 80px; height: 80px; flex-shrink: 0; background: #12100D; border: 1px solid #2A2620; position: relative;">
+              <div
+                style="position: absolute; inset: 6px; background: #E9E2CF; -webkit-mask: url('../assets/art/enemy_watcher_lit.png') center/contain no-repeat; mask: url('../assets/art/enemy_watcher_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div>
+              <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF;">THE WATCHER</div>
+              <div class="note">does nothing but look · looking back is the mistake</div>
+              <div class="tag" style="margin-top: 4px; display: inline-block;">dread</div>
+            </div>
+          </div>
+          <div class="card" style="display: flex; gap: 12px;">
+            <div
+              style="width: 80px; height: 80px; flex-shrink: 0; background: #12100D; border: 1px solid #2A2620; position: relative;">
+              <div
+                style="position: absolute; inset: 6px; background: #E9E2CF; -webkit-mask: url('../assets/art/maw_lit.png') center/contain no-repeat; mask: url('../assets/art/maw_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div>
+              <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #E9E2CF;">THE WELL-MOUTH</div>
+              <div class="note">boss · a hole with teeth · wants an offering</div>
+              <div class="tag" style="margin-top: 4px; display: inline-block;">boss</div>
+            </div>
+          </div>
+          <div class="card" style="display: flex; gap: 12px; border-color: #4a211c;">
+            <div
+              style="width: 80px; height: 80px; flex-shrink: 0; background: #12100D; border: 1px solid #4a211c; position: relative;">
+              <div
+                style="position: absolute; inset: 6px; background: #E9E2CF; -webkit-mask: url('../assets/art/cultist_lit.png') center/contain no-repeat; mask: url('../assets/art/cultist_lit.png') center/contain no-repeat;">
+              </div>
+            </div>
+            <div>
+              <div style="font-family: 'Silkscreen', monospace; font-size: 9px; color: #C8341F;">REVENANT</div>
+              <div class="note">a lost run, come back wrong · <b style="color:#E9E2CF;">still carrying what it died
+                  with</b> · put it down once and it stays down</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ RELICS + TAROT ============ -->
+      <div class="sec">
+        <div class="seclabel">13 · RELICS &amp; FATE</div>
+        <div style="display: flex; gap: 18px;">
+          <!-- relics -->
+          <div class="card" style="flex: 1; display: flex; flex-direction: column; gap: 9px;">
+            <div class="pin">RELICS — BOONS, BARGAINS, CURSES</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 10px; border: 1px solid #2A2620; padding: 7px 9px;">
+                <div style="width: 36px; height: 36px; position: relative;">
+                  <div
+                    style="position: absolute; inset: 0; background: #E9E2CF; -webkit-mask: url('../assets/art/relic_bone_lit.png') center/contain no-repeat; mask: url('../assets/art/relic_bone_lit.png') center/contain no-repeat;">
+                  </div>
+                </div>
+                <div style="flex:1;">
+                  <div style="font-size: 15px; font-family:'VT323', monospace; color: #E9E2CF;">BONE CHARM</div>
+                  <div class="note">sharpens the eye</div>
+                </div>
+                <div
+                  style="width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 9px solid #E9E2CF;">
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; border: 1px solid #2A2620; padding: 7px 9px;">
+                <div style="width: 36px; height: 36px; position: relative;">
+                  <div
+                    style="position: absolute; inset: 0; background: #E9E2CF; -webkit-mask: url('../assets/art/relic_candle_lit.png') center/contain no-repeat; mask: url('../assets/art/relic_candle_lit.png') center/contain no-repeat;">
+                  </div>
+                </div>
+                <div style="flex:1;">
+                  <div style="font-size: 15px; font-family:'VT323', monospace; color: #E9E2CF;">SAINT'S CANDLE</div>
+                  <div class="note">holds the dark back — burns down</div>
+                </div>
+                <div style="width: 9px;height: 9px;background: #E9E2CF;transform: rotate(45deg);"></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; border: 1px solid #2A2620; padding: 7px 9px;">
+                <div style="width: 36px; height: 36px; position: relative;">
+                  <div
+                    style="position: absolute; inset: 0; background: #E9E2CF; -webkit-mask: url('../assets/art/relic_coin_lit.png') center/contain no-repeat; mask: url('../assets/art/relic_coin_lit.png') center/contain no-repeat;">
+                  </div>
+                </div>
+                <div style="flex:1;">
+                  <div style="font-size: 15px; font-family:'VT323', monospace; color: #E9E2CF;">FERRYMAN'S COIN</div>
+                  <div class="note">buys back one death</div>
+                </div>
+                <div
+                  style="width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 9px solid #E9E2CF;">
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; border: 1px solid #4a211c; padding: 7px 9px;">
+                <div style="width: 36px; height: 36px; position: relative;">
+                  <div
+                    style="position: absolute; inset: 0; background: #C8341F; -webkit-mask: url('../assets/art/relic_dress_lit.png') center/contain no-repeat; mask: url('../assets/art/relic_dress_lit.png') center/contain no-repeat;">
+                  </div>
+                </div>
+                <div style="flex:1;">
+                  <div style="font-size: 15px; font-family:'VT323', monospace; color: #C8341F;">MASHA'S DRESS</div>
+                  <div class="note">map withheld · can't drop</div>
+                </div>
+                <div
+                  style="width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 9px solid #C8341F;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- tarot -->
+          <div class="card" style="width: 500px; display: flex; flex-direction: column; gap: 9px;">
+            <div class="pin" style="color:#C8341F;">TAROT — DRAWN BEFORE EACH DESCENT</div>
+            <div style="display: flex; gap: 9px;">
+              <div
+                style="flex: 1; border: 1px solid #E9E2CF; padding: 9px; display: flex; flex-direction: column; gap: 5px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #6E675C;">XVII</div>
+                <div style="font-family: 'Jacquard 12', monospace; font-size: 20px; color: #E9E2CF; line-height: 1;">The
+                  Star</div>
+                <div class="note" style="flex:1;">the odds tilt your way</div>
+                <div
+                  style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #E9E2CF; border: 1px solid #E9E2CF; padding: 1px 4px; align-self: flex-start;">
+                  BOON</div>
+              </div>
+              <div
+                style="flex: 1; border: 1px solid #C8341F; padding: 9px; display: flex; flex-direction: column; gap: 5px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #C8341F;">XVIII</div>
+                <div style="font-family: 'Jacquard 12', monospace; font-size: 20px; color: #E9E2CF; line-height: 1;">The
+                  Moon</div>
+                <div class="note" style="flex:1;">map clues lie this level</div>
+                <div
+                  style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #C8341F; border: 1px solid #C8341F; padding: 1px 4px; align-self: flex-start;">
+                  ILL</div>
+              </div>
+              <div
+                style="flex: 1; border: 1px solid #C8341F; padding: 9px; display: flex; flex-direction: column; gap: 5px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #C8341F;">XVI</div>
+                <div style="font-family: 'Jacquard 12', monospace; font-size: 20px; color: #E9E2CF; line-height: 1;">The
+                  Tower</div>
+                <div class="note" style="flex:1;">the dark comes faster — but it pays better</div>
+                <div
+                  style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #C8341F; border: 1px solid #C8341F; padding: 1px 4px; align-self: flex-start;">
+                  ILL</div>
+              </div>
+            </div>
+            <div class="note">One language of cards runs through everything — the test in the moment, the turn of an
+              event, the rule over a whole descent. Sometimes you choose. Sometimes it chooses you.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ TRANSITION + DEATH + LORE ============ -->
+      <div class="sec">
+        <div class="seclabel">14 · BETWEEN GALLERIES · DEATH · WHAT'S WRITTEN DOWN</div>
+        <div style="display: flex; gap: 16px;">
+          <!-- transition -->
+          <div class="card" style="width: 300px; display: flex; flex-direction: column; gap: 9px;">
+            <div class="pin">BETWEEN GALLERIES</div>
+            <div
+              style="height: 200px; background: #0E0D0B; border: 1px solid #2A2620; position: relative; overflow: hidden;">
+              <div
+                style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: #E9E2CF; opacity: 0.7;">
+              </div>
+              <div
+                style="position: absolute; left: calc(50% - 9px); top: 30%; width: 18px; height: 18px; background: #E9E2CF; animation: descend 1.2s ease-in-out infinite alternate;"
+                class="spr"></div>
+              <div
+                style="position: absolute; right: 10px; top: 14px; font-family: 'Silkscreen', monospace; font-size: 8px; color: #6E675C;">
+                −10m</div>
+              <div
+                style="position: absolute; right: 10px; top: 90px; font-family: 'Silkscreen', monospace; font-size: 8px; color: #C8341F;">
+                −47m</div>
+              <div
+                style="position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; padding-bottom: 12px;">
+                <div
+                  style="transform: rotate(-5deg); border: 2px double #C8341F; color: #C8341F; font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 1px; padding: 5px 10px;">
+                  SEAL BROKEN</div>
+              </div>
+            </div>
+            <div class="note">you rope down through the dark, the depth climbing past you, until a <span
+                style="color:#E9E2CF;">wax seal</span> closes over the way you came. there is no climbing back up it.
+            </div>
+          </div>
+          <!-- death -->
+          <div class="card" style="flex: 1; display: flex; flex-direction: column; gap: 9px;">
+            <div class="pin">DEATH — YOU READ ABOUT YOURSELF</div>
+            <div
+              style="height: 200px; background: #E2DAC4; border: 1px solid #2A2620; padding: 12px 14px; display: flex; flex-direction: column; gap: 5px;">
+              <div
+                style="font-family: 'Special Elite', monospace; font-size: 11px; color: #1B1815; text-align: center; border-bottom: 2px solid #1B1815; padding-bottom: 4px; letter-spacing: 1px;">
+                THE ODYSSA COURIER — LATE EDITION</div>
+              <div style="font-family: 'Jacquard 12', monospace; font-size: 26px; color: #1B1815; line-height: 0.95;">
+                Another tourist missing below</div>
+              <div style="display: flex; gap: 10px; flex: 1; margin-top: 4px;">
+                <div style="width: 110px; border: 1px solid #1B1815; position: relative; overflow: hidden;">
+                  <div
+                    style="position: absolute; inset: 0; background: #1B1815; -webkit-mask: url('../assets/art/pale_lit.png') center/cover no-repeat; mask: url('../assets/art/pale_lit.png') center/cover no-repeat;">
+                  </div>
+                </div>
+                <div
+                  style="flex: 1; font-family: 'Special Elite', monospace; font-size: 12px; color: #1B1815; line-height: 1.25;">
+                  Locals say they went down chasing a story. Search parties report only a dropped camera and water,
+                  dripping. "They never listen," one guide said.</div>
+              </div>
+            </div>
+            <div class="note">No score, no summary. Just a column inch about another tourist who didn't come back — only
+              what the paper could plausibly know: a guide's shrug, a recovered camera, water still dripping somewhere
+              below.</div>
+          </div>
+          <!-- lore -->
+          <div class="card" style="width: 340px; display: flex; flex-direction: column; gap: 9px;">
+            <div class="pin">WHAT'S WRITTEN DOWN</div>
+            <div style="display: flex; gap: 8px; height: 200px;">
+              <div
+                style="flex: 1; background: #0B0F0A; border: 1px solid #2A2620; padding: 10px; display: flex; flex-direction: column; gap: 3px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 7px; color: #6E675C;">old computer →</div>
+                <div style="font-family: 'VT323', monospace; font-size: 16px; color: #9FE8B0; line-height: 1.15;">&gt;
+                  LOG 042</div>
+                <div style="font-family: 'VT323', monospace; font-size: 16px; color: #D8E5E6; line-height: 1.15;">
+                  gallery sealed. reason: ████.</div>
+                <div style="font-family: 'VT323', monospace; font-size: 16px; color: #6E675C;">_</div>
+              </div>
+              <div
+                style="flex: 1; background: #12100D; border: 1px solid #2A2620; padding: 10px; display: flex; flex-direction: column; gap: 4px;">
+                <div style="font-family: 'Silkscreen', monospace; font-size: 7px; color: #6E675C;">torn paper →</div>
+                <div style="font-family: 'Handjet', monospace; font-size: 18px; color: #E9E2CF; line-height: 1.25;">they
+                  told us it was flooded.</div>
+                <div style="font-family: 'Handjet', monospace; font-size: 18px; color: #C8341F; line-height: 1.25;">it
+                  was not flooded.</div>
+              </div>
+            </div>
+            <div class="note">An old screen reads one way; a torn page reads another. Some of what you find is true.
+              Some of it is only what someone needed to believe.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ TYPE + THEME LOCK ============ -->
+      <div class="sec">
+        <div class="seclabel">15 · THE LOOK</div>
+        <div style="display: flex; gap: 16px;">
+          <div class="card" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">TYPE SYSTEM</div>
+            <div style="display: flex; align-items: baseline; gap: 14px;">
+              <div style="font-family: 'Jacquard 12', monospace; font-size: 34px; color: #E9E2CF;">Odyssa Catacombs
+              </div>
+              <div class="note">WOVEN — wordmark / titles / death cards</div>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 14px;">
+              <div style="font-family: 'Silkscreen', monospace; font-size: 13px; color: #E9E2CF; letter-spacing: 1px;">
+                LABELS &amp; CHROME</div>
+              <div class="note">the chrome — labels, tags, the small print</div>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 14px;">
+              <div style="font-family: 'VT323', monospace; font-size: 22px; color: #E9E2CF;">Body prose &amp; narration.
+              </div>
+              <div class="note">VT323 — narration, choices</div>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 14px;">
+              <div style="font-family: 'Handjet', monospace; font-size: 20px; color: #E9E2CF;">found documents</div>
+              <div class="note">Handjet — pixel-typewriter lore docs · VT323 green for terminals</div>
+            </div>
+          </div>
+          <div class="card" style="width: 540px; display: flex; flex-direction: column; gap: 10px;">
+            <div class="pin">THEMES</div>
+            <div style="display: flex; gap: 8px;">
+              <div style="flex: 1; text-align: center;">
+                <div style="display: flex; gap: 2px; height: 26px;">
+                  <div style="flex: 2; background: #12100D; border: 1px solid #3A3733;"></div>
+                  <div style="flex: 2; background: #E9E2CF;"></div>
+                  <div style="flex: 1; background: #C8341F;"></div>
+                </div>
+                <div style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #CFC6B2; margin-top: 3px;">BONE
+                  ★default</div>
+              </div>
+              <div style="flex: 1; text-align: center;">
+                <div style="display: flex; gap: 2px; height: 26px;">
+                  <div style="flex: 2; background: #0B1013; border: 1px solid #3A3733;"></div>
+                  <div style="flex: 2; background: #D8E5E6;"></div>
+                  <div style="flex: 1; background: #3FC1D3;"></div>
+                </div>
+                <div style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #CFC6B2; margin-top: 3px;">
+                  GEIGER cb-safe</div>
+              </div>
+              <div style="flex: 1; text-align: center;">
+                <div style="display: flex; gap: 2px; height: 26px;">
+                  <div style="flex: 2; background: #15100A; border: 1px solid #3A3733;"></div>
+                  <div style="flex: 2; background: #E8D49A;"></div>
+                  <div style="flex: 1; background: #E0921E;"></div>
+                </div>
+                <div style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #CFC6B2; margin-top: 3px;">GAS
+                  LAMP</div>
+              </div>
+              <div style="flex: 1; text-align: center;">
+                <div style="display: flex; gap: 2px; height: 26px;">
+                  <div style="flex: 2; background: #0B0F0A; border: 1px solid #3A3733;"></div>
+                  <div style="flex: 2; background: #D5E3C8;"></div>
+                  <div style="flex: 1; background: #6FB544;"></div>
+                </div>
+                <div style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #CFC6B2; margin-top: 3px;">
+                  MOULD</div>
+              </div>
+              <div style="flex: 1; text-align: center;">
+                <div style="display: flex; gap: 2px; height: 26px;">
+                  <div
+                    style="flex: 1; background: #100E0B; border: 1px dashed #6E675C; display: flex; align-items: center; justify-content: center; color: #6E675C; font-size: 11px;">
+                    ?</div>
+                </div>
+                <div style="font-family: 'Silkscreen', monospace; font-size: 6px; color: #6E675C; margin-top: 3px;">
+                  +more</div>
+              </div>
+            </div>
+            <div class="note">The look can change — a few palettes to find, one earned only by collecting all the
+              others. The dark and the light may swap. <span style="color:#E9E2CF;">The red never does; it always means
+                the same thing.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="board-foot">
+    <div class="fwm" aria-label="Odyssa">Od<span class="y">y</span>ssa</div>
+    <div class="fl">IN DEVELOPMENT · WILL BE COMING TO STEAM EARLY ACCESS SOON</div>
+    <div class="fm">15% OF NET REVENUE → HUMANITARIAN AID IN UKRAINE · PLEDGED THROUGH THE 1.0 YEAR</div>
+  </footer>
+
+  <a class="home-return" href="../" aria-label="Return to home">&lsaquo; HOME</a>
+
+  <script src="../assets/ascii-field.js"></script>
+  <script>
+    AsciiField.mount(document.getElementById('heroAscii'), { shape: 'tunnel', invert: true, cell: 15, accent: 0.15 });
+  </script>
+</body>
+
+</html>
