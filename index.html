@@ -359,13 +359,17 @@
       }
 
       main.core {
-        justify-content: flex-start;
-        padding-top: 14vh;
+        /* center the title block vertically; the extra bottom padding keeps it
+           clear of the pledge now pinned to the bottom on mobile */
+        justify-content: center;
         padding-bottom: 120px;
       }
 
+      /* move the pledge to the bottom on mobile — at the top it crowds the
+         wordmark, and the lower half of the screen is otherwise empty */
       .hud {
-        top: 12px;
+        top: auto;
+        bottom: 12px;
         padding: 0 12px;
       }
 
@@ -388,7 +392,7 @@
     <div class="hud-depth">
       <div class="hud-depth-tag">Pledge:</div>
       <div class="hud-depth-val">15% OF NET REVENUE &rarr; HUMANITARIAN AID IN UKRAINE &nbsp;·&nbsp; PLEDGED THROUGH THE
-        END OF THE YEAR OF V1.0'S RELEASE (2026)</div>
+        END OF THE YEAR OF V1.0'S RELEASE (2027)</div>
     </div>
   </div>
 
