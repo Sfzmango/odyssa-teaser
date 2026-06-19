@@ -331,6 +331,58 @@
     .home-return:active {
       transform: translateY(1px);
     }
+
+    /* ---- mobile spacing (CSS-only; no markup changes) ---- */
+    @media (max-width: 820px) {
+
+      /* hero: trim padding and the wide subtitle tracking so it fits */
+      .hero {
+        padding: 44px 18px;
+        min-height: 68vh;
+      }
+
+      .hero .sub {
+        letter-spacing: 5px;
+        padding-left: .2em;
+      }
+
+      /* board frame: smaller gutters and inter-section gaps */
+      .boardwrap {
+        padding: 18px 14px;
+      }
+
+      .boardinner {
+        gap: 34px;
+      }
+
+      .sec {
+        gap: 14px;
+      }
+
+      /* stack the side-by-side card rows (masthead + every section row) */
+      .boardinner > div > div[style*="display: flex"]:not([data-screen-label]) {
+        flex-direction: column !important;
+      }
+
+      /* fixed-width columns inside those rows go full width once stacked */
+      .boardinner > div > div[style*="display: flex"] > div[style*="width:"] {
+        width: 100% !important;
+      }
+
+      /* dense card grids (4-up / 3-up) collapse to 2-up */
+      .sec > div[style*="grid-template-columns: repeat(4, 1fr)"],
+      .sec > div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+
+    /* phones: dense grids go single-column for legibility */
+    @media (max-width: 520px) {
+      .sec > div[style*="grid-template-columns: repeat(4, 1fr)"],
+      .sec > div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 
@@ -1573,6 +1625,24 @@
   <script src="../assets/ascii-field.js"></script>
   <script>
     AsciiField.mount(document.getElementById('heroAscii'), { shape: 'tunnel', invert: true, cell: 15, accent: 0.15 });
+  </script>
+  <script>
+    /* Scale the fixed-size pixel mockups (hub / encounter / inventory) down to
+       fit their column, shrinking the whole board rather than clipping it.
+       Uses numeric `zoom` (cross-browser incl. Firefox) capped at 1 so the
+       desktop layout is never enlarged past its 1320px design size. */
+    (function () {
+      document.querySelectorAll('[data-screen-label]').forEach(function (el) {
+        var designW = parseInt(el.style.width, 10) || 1320;
+        var parent = el.parentElement;
+        function fit() {
+          el.style.zoom = String(Math.min(1, parent.clientWidth / designW));
+        }
+        fit();
+        if (window.ResizeObserver) new ResizeObserver(fit).observe(parent);
+        else window.addEventListener('resize', fit);
+      });
+    })();
   </script>
 </body>
 
